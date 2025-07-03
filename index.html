@@ -1,111 +1,152 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="DeltaLogo.png">
-    <title>Baltazar  Scasso</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Plitvice Lakes National Park - Official Website</title>
+    <meta name="description" content="Discover the breathtaking beauty of Plitvice Lakes National Park, a UNESCO World Heritage site in Croatia. Explore cascading waterfalls, crystal-clear lakes, and lush forests.">
+    <meta name="keywords" content="Plitvice Lakes, National Park, Croatia, UNESCO, waterfalls, nature, travel, tourism">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     
-    
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="antialiased">
+<body>
 
-    <header class="text-center py-20 md:py-32 px-4">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-7xl md:text-6xl font-extrabold tracking-tight">
-                Facturá +$3k/mes con tu <f>Agencia de Contenido</f>
-            </h1>
-            <p class="mt-6 text-lg md:text-xl max-w-2xl mx-auto text-secondary-theme">
-                Te ayudo a escalar tu Agencia de contenido a <f>+$3,000/mes</f> creando contenido y aumentando el valor percibido de tu oferta. 
-            </p>
-            <div class="mt-8 flex justify-center">
-                <a href="https://calendly.com/delta-growth-agency/llamada-larga-consultas" target="_blank" class="cta-button font-bold py-3 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    Agendá tu Llamada Estratégica
-                </a>
+    <header>
+        <nav>
+            <a href="#home" class="logo" aria-label="Plitvice Lakes National Park Home">
+                <span>Plitvice Park</span>
+            </a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#attractions">Attractions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="header-actions">
+                <a href="https://ticketing.np-plitvicka-jezera.hr/" class="cta-button">Buy Tickets</a>
+                <button id="theme-toggle" aria-label="Toggle Theme">🌜</button>
             </div>
-            <p class="mt-4 text-sm" style="color: rgba(19, 29, 79, 0.6);">Llamada 100% gratuita y sin compromiso.</p>
-        </div>
+        </nav>
     </header>
-    <section class="py-20 px-4">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center">
-                <h2 class="text-4xl md:text-3xl font-extrabold">¿Que hago? <f>Resumido en 3 cosas:</f></h2>
-                <p class="mt-4 text-lg text-secondary-theme max-w-2xl mx-auto">perfeccioné un sistema de 3 pasos para llevar tu negocio al siguiente nivel de forma predecible.</p>
-            </div>
-            <div class="mt-16 grid md:grid-cols-3 gap-8 md:gap-12 text-center">
-                <div class="p-8 rounded-2xl shadow-lg" style="background-color: var(--bg-section);">
-                    <div class="text-4xl font-bold mb-4" style="color: var(--cta-terracotta);">01</div>
-                    <h3 class="text-xl font-semibold mb-2">Content</h3>
-                    <p class="text-secondary-theme">A partir del contenido, creamos una manera solida de prospeccion</p>
-                </div>
-                <div class="p-8 rounded-2xl shadow-lg" style="background-color: var(--bg-section);">
-                    <div class="text-4xl font-bold mb-4" style="color: var(--cta-terracotta);">02</div>
-                    <h3 class="text-xl font-semibold mb-2">Offer</h3>
-                    <p class="text-secondary-theme">Creamos y aumentamos el valor percibido de tu oferta, ampliando así la calidad de la misma para vender a un precio mas alto.</p>
-                </div>
-                <div class="p-8 rounded-2xl shadow-lg" style="background-color: var(--bg-section);">
-                    <div class="text-4xl font-bold mb-4" style="color: var(--cta-terracotta);">03</div>
-                    <h3 class="text-xl font-semibold mb-2">Freedom</h3>
-                    <p class="text-secondary-theme">Logramos que puedas vivir mas tranquilo ganando +$3k/mes</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-20 px-4" style="background-color: var(--bg-section);">
-        <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 items-center">
-            <div class="md:col-span-1 flex justify-center">
-                <img src="image.png" alt="Foto de Juan Manuel Merodio" class="rounded-full w-52 h-52 md:w-64 md:h-64 object-cover border-4" style="border-color: var(--bg-main);">
+    <main>
+        <section id="home">
+            <div class="hero-content">
+                <h1>A Symphony of Life</h1>
+                <p class="fade-up">Experience the magic of sixteen cascading lakes and a wonderland of waterfalls.</p>
+                <a href="#about" class="discover-button fade-up">Discover More</a>
             </div>
-            <div class="md:col-span-2">
-                <h2 class="text-3xl font-bold mb-4">Mi nombre es:<br><f>Baltazar Scasso</f>.</h2>
-                <div class="space-y-4 text-secondary-theme">
-                    <p>Hace 2 años decidí dejar la carrera de licenciatura en economía para empezar en mi camino en los negocios. empezé en <f>Amazon FBA, Dropshipping, Creación Webs, Paid Ads..</f> Pero nada de eso funcionó </p>
-                    <p>Despues, encontre una nueva habilidad que alcanze mis objetivos, la cual era aprender a editar y crear contenido tanto para mi como para Coahces. Empeze a editar contenido gratis hasta que vi un aumento significativo en sus clientes.. <f>y eso fué lo que cambio mi perspectiva</f></p>
+        </section>
+
+        <section id="about" class="fade-up">
+            <div class="about-wrapper">
+                <div class="about-gallery">
+                    <img src="https://1000marcas.net/wp-content/uploads/2020/02/logo-UNESCO.png" alt="Official UNESCO World Heritage Logo">
+                </div>
+                <div class="about-text">
+                    <h2>A UNESCO World Heritage Treasure</h2>
+                    <p>Plitvice Lakes National Park is the oldest and largest national park in the Republic of Croatia. The park is world-famous for its lakes arranged in cascades, formed by natural travertine dams.</p>
+                    <p>Its exceptional beauty is not only in its lakes but also in its lush forests, home to a wide variety of rare flora and fauna, making it a true haven for nature lovers.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="gallery" class="fade-up">
+            <h2>A Glimpse of Paradise</h2>
+            <p>Explore the vibrant colors of Plitvice through the seasons.</p>
+            <div class="gallery-grid">
+                <figure><img src="https://images.pexels.com/photos/546943/pexels-photo-546943.jpeg" alt="Lush green landscape with a large waterfall cascading into a turquoise lake."><figcaption>Peaceful Landscape</figcaption></figure>
+                <figure><img src="https://images.pexels.com/photos/19714045/pexels-photo-19714045.jpeg" alt="A frozen waterfall in winter at Plitvice Lakes."><figcaption>Winter Colors</figcaption></figure>
+                <figure><img src="https://images.pexels.com/photos/15814343/pexels-photo-15814343.jpeg" alt="Vibrant green moss covering rocks next to flowing water in spring."><figcaption>Spring Wonderland</figcaption></figure>
+                <figure><img src="https://images.pexels.com/photos/29298807/pexels-photo-29298807.jpeg" alt="Rich orange and yellow autumn foliage surrounding the clear park lakes."><figcaption>Autumn Wonder</figcaption></figure>
+            </div>
+        </section>
+
+        <section id="attractions" class="fade-up">
+            <h2>What Will You See?</h2>
+            <div class="attractions-grid">
+                <article>
+                    <i class="fas fa-water fa-3x attraction-icon"></i>
+                    <h3>The Upper Lakes</h3>
+                    <p>A serene series of 12 lakes in a dolomite valley, surrounded by dense forests and interconnected by waterfalls.</p>
+                </article>
+                <article>
+                    <i class="fas fa-mountain fa-3x attraction-icon"></i>
+                    <h3>The Lower Lakes</h3>
+                    <p>Four smaller lakes in a limestone canyon, featuring the iconic Great Waterfall (Veliki Slap).</p>
+                </article>
+                <article>
+                    <i class="fas fa-leaf fa-3x attraction-icon"></i>
+                    <h3>Flora & Fauna</h3>
+                    <p>Discover a rich biodiversity, including over 1,400 plant species and rare animals like the brown bear.</p>
+                </article>
+                <article>
+                    <i class="fa-solid fa-compass fa-3x attraction-icon"></i>
+                    <h3>Timeless Escape</h3>
+                    <p>From lush spring greens to golden autumn tones, Plitvice reveals a different kind of magic in every season.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="fade-up">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <p>Have questions? Our team is here to help you plan your visit. Reach out to us for any inquiries.</p>
+                <div class="contact-wrapper">
+                    <div class="contact-form">
+                        <form id="contact-form">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45084.66443391039!2d15.579469792072122!3d44.88139525492138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4761bf647de77123%3A0xf33919c9103c3283!2sParque%20Nacional%20de%20los%20Lagos%20de%20Plitvice!5e0!3m2!1ses-419!2sar!4v1720050893540!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
     
-    <section class="py-20 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-             <h2 class="text-3xl md:text-4xl font-bold">Testimonios</h2>
-             <p class="mt-4 text-lg text-secondary-theme">casos reales y testimonios:</p>
-             <div class="mt-12 grid md:grid-cols-2 gap-8 text-left">
-                 <div class="p-6 rounded-xl shadow-lg" style="background-color: var(--bg-section);">
-                     <p class="text-secondary-theme">Cobraba $100USD por cliente, no fue asi hasta que conoci a Balta. Pase de cobrar $600USD/mes por cliente a cobrar <f>$2300/mes</f> con su mentoria.</p>
-                     <div class="mt-4 font-bold">- Testimonio #15</div>
-                     <div class="text-sm font-semibold" style="color: var(--cta-terracotta);">@aldigitall - Creadora de Contenido</div>
-                 </div>
-                 <div class="p-6 rounded-xl shadow-lg" style="background-color: var(--bg-section);">
-                     <p class="text-secondary-theme">"A ver, estoy super satisfecho con sus servicios, porque entendí que la viralidad no es sinonimo de plata, es sinonimo de leads PODRIDOS, Balta gracias por brindarme todo este conocimiento. No lo duden.."</p>
-                     <div class="mt-4 font-bold">- Testimonio #22</div>
-                     <div class="text-sm font-semibold" style="color: var(--cta-terracotta);">Tomi Drago - Content Specialist</div>
-                 </div>
-             </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-4 text-center" style="background-color: var(--bg-section);">
-        <div class="max-w-2xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold">Dejame decirte que solo no vas a llegar a <f>ningun lado</f></h2>
-            <p class="mt-4 text-lg text-secondary-theme">Agendá una llamada gratuita conmigo y te daré un plan de acción claro para que alcances tus metas de facturación en los próximos 90 días.</p>
-            <div class="mt-8">
-                 <a href="https://calendly.com/delta-growth-agency/llamada-larga-consultas" target="_blank" class="cta-button font-bold py-4 px-10 rounded-full text-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    ¡Quiero Escalar Mi Negocio!
-                </a>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/PlitviceLakesNP" aria-label="Facebook">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/plitvicelakesnp/" aria-label="Instagram">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@plitvicelakesnp" aria-label="YouTube">YouTube</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Newsletter</h3>
+                <p>Subscribe for updates and special offers.</p>
+                <form id="subscribe-form">
+                    <input type="email" placeholder="Your Email Address">
+                    <a href="https://email.np-plitvicka-jezera.hr/x/plugin/?pName=subscribe&MIDRID=S7Y1BAAA38&pLang=en&Z=902555087" class="cta-button" target="_blank">Subscribe</a>
+                </form>
+            </div>
+            <div>
+                <h3>Contact</h3>
+                <address>
+                    Josipa Jovića 19, Croatia<br>
+                    <a href="tel:+385053751015">+385 (0)53 751 015</a><br>
+                    <a href="mailto:info@np-plitvicka-jezera.hr">info@np-plitvicka-jezera.hr</a>
+                </address>
             </div>
         </div>
-    </section>
-
-    <footer class="text-center py-8 px-4 border-t" style="border-color: rgba(0,0,0,0.1);">
-        <p style="color: rgba(19, 29, 79, 0.6);">&copy; <span id="year"></span>@baltasca. Todos los derechos reservados.</p>
+        <div class="footer-copyright">
+            <p>© 2025 Plitvice Lakes National Park. All Rights Reserved.</p>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
