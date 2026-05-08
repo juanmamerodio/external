@@ -1,152 +1,440 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plitvice Lakes National Park - Official Website</title>
-    <meta name="description" content="Discover the breathtaking beauty of Plitvice Lakes National Park, a UNESCO World Heritage site in Croatia. Explore cascading waterfalls, crystal-clear lakes, and lush forests.">
-    <meta name="keywords" content="Plitvice Lakes, National Park, Croatia, UNESCO, waterfalls, nature, travel, tourism">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Arquitectura del Sistema de Peaje | iOS 26 Design</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* iOS 26 / VisionOS inspired color palette */
+            --apple-bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.8);
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent-blue: #007aff;
+            --shadow-glass: 0 24px 48px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0,0,0,0.02);
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f5f7;
+            background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,0.03) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,0.03) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,0.03) 0, transparent 50%);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Ambient animated background bubbles */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(to bottom right, #f2f2f7, #e5e5ea);
+        }
+        .ambient-blob {
+            position: absolute;
+            filter: blur(90px);
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #e0eaff; animation-delay: 0s; }
+        .blob-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: #fae8ff; animation-delay: -5s; }
+        .blob-3 { top: 40%; left: 30%; width: 30vw; height: 30vw; background: #e0f2fe; animation-delay: -10s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5%, 10%) scale(1.1); }
+        }
+
+        /* Glassmorphism Cards */
+        .ios-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            box-shadow: var(--shadow-glass);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .ios-card {
+                padding: 1.5rem;
+                border-radius: 24px;
+            }
+        }
+
+        .ios-card:hover {
+            transform: translateY(-4px) scale(1.005);
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.06), 0 8px 16px rgba(0,0,0,0.03);
+        }
+
+        /* Typography */
+        h1 { font-weight: 700; letter-spacing: -0.04em; }
+        h2 { font-weight: 600; letter-spacing: -0.02em; color: var(--text-primary); }
+        p.subtitle { color: var(--text-secondary); font-size: 1.1rem; letter-spacing: -0.01em; }
+
+        /* Badge/Tag styling */
+        .ios-badge {
+            display: inline-block;
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        /* Mermaid Container */
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            overflow-x: auto;
+            padding: 1rem 0;
+            /* Scrollbar styling for webkit */
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0,0,0,0.2) transparent;
+        }
+        .mermaid::-webkit-scrollbar { height: 6px; }
+        .mermaid::-webkit-scrollbar-track { background: transparent; }
+        .mermaid::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.2); border-radius: 20px; }
+
+        /* Header Navigation */
+        .nav-glass {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(245, 245, 247, 0.72);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="#home" class="logo" aria-label="Plitvice Lakes National Park Home">
-                <span>Plitvice Park</span>
-            </a>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#attractions">Attractions</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="header-actions">
-                <a href="https://ticketing.np-plitvicka-jezera.hr/" class="cta-button">Buy Tickets</a>
-                <button id="theme-toggle" aria-label="Toggle Theme">🌜</button>
-            </div>
-        </nav>
-    </header>
+    <div class="ambient-bg">
+        <div class="ambient-blob blob-1"></div>
+        <div class="ambient-blob blob-2"></div>
+        <div class="ambient-blob blob-3"></div>
+    </div>
 
-    <main>
-        <section id="home">
-            <div class="hero-content">
-                <h1>A Symphony of Life</h1>
-                <p class="fade-up">Experience the magic of sixteen cascading lakes and a wonderland of waterfalls.</p>
-                <a href="#about" class="discover-button fade-up">Discover More</a>
+    <nav class="nav-glass px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tight text-gray-900 flex items-center gap-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                TollFlow Arch
+            </div>
+            <div class="text-sm font-medium text-gray-500 hidden sm:block">
+                Spec v2.0 • iOS 26 Spatial Interface
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-12 sm:py-20">
+        
+        <header class="text-center mb-16 sm:mb-24">
+            <h1 class="text-4xl sm:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600">
+                Sistema de Gestión de Peajes
+            </h1>
+            <p class="subtitle max-w-2xl mx-auto leading-relaxed">
+                Documentación técnica de arquitectura. Módulo de carga de clientes, conteo de pases por estación, tarifario dinámico y facturación mensual.
+            </p>
+        </header>
+
+        <section class="ios-card">
+            <span class="ios-badge">Visión de Negocio</span>
+            <h2 class="text-2xl sm:text-3xl mb-3">1. Diagrama Entidad-Relación (DER)</h2>
+            <p class="text-gray-500 mb-8 leading-relaxed">Modelo conceptual de las entidades principales del negocio y sus relaciones. Describe cómo un Cliente se vincula a sus Vehículos y la responsabilidad de los pases en las Estaciones.</p>
+            <div class="mermaid">
+                erDiagram
+                    CLIENTE ||--|{ VEHICULO : "posee"
+                    VEHICULO ||--o{ PASE : "realiza"
+                    ESTACION_PEAJE ||--o{ PASE : "registra"
+                    ESTACION_PEAJE ||--|{ TARIFA : "tiene"
+                    CLIENTE ||--o{ FACTURA_MENSUAL : "recibe"
+                    FACTURA_MENSUAL ||--|{ PASE : "consolida"
             </div>
         </section>
 
-        <section id="about" class="fade-up">
-            <div class="about-wrapper">
-                <div class="about-gallery">
-                    <img src="https://1000marcas.net/wp-content/uploads/2020/02/logo-UNESCO.png" alt="Official UNESCO World Heritage Logo">
-                </div>
-                <div class="about-text">
-                    <h2>A UNESCO World Heritage Treasure</h2>
-                    <p>Plitvice Lakes National Park is the oldest and largest national park in the Republic of Croatia. The park is world-famous for its lakes arranged in cascades, formed by natural travertine dams.</p>
-                    <p>Its exceptional beauty is not only in its lakes but also in its lush forests, home to a wide variety of rare flora and fauna, making it a true haven for nature lovers.</p>
-                </div>
+        <section class="ios-card">
+            <span class="ios-badge">Persistencia en Base de Datos</span>
+            <h2 class="text-2xl sm:text-3xl mb-3">2. Diagrama Lógico Relacional (DLR)</h2>
+            <p class="text-gray-500 mb-8 leading-relaxed">Estructura detallada de las tablas en la base de datos, definiendo claves primarias (PK), claves foráneas (FK) y atributos clave para garantizar la integridad referencial.</p>
+            <div class="mermaid">
+                erDiagram
+                    CLIENTE {
+                        int id_cliente PK
+                        string cuit_dni UK
+                        string nombre_razon_social
+                        string email
+                    }
+                    VEHICULO {
+                        string patente PK
+                        int id_cliente FK
+                        string tipo_vehiculo
+                        string tag_rfid UK
+                    }
+                    ESTACION {
+                        int id_estacion PK
+                        string nombre_estacion
+                    }
+                    TARIFA {
+                        int id_tarifa PK
+                        int id_estacion FK
+                        string tipo_vehiculo
+                        decimal monto_actual
+                    }
+                    PASE {
+                        int id_pase PK
+                        string patente FK
+                        int id_estacion FK
+                        datetime fecha_hora
+                        decimal monto_cobrado
+                        boolean facturado
+                    }
+                    FACTURA {
+                        int id_factura PK
+                        int id_cliente FK
+                        int mes_periodo
+                        int anio_periodo
+                        decimal monto_total
+                        string estado_pago
+                    }
+
+                    CLIENTE ||--|{ VEHICULO : ""
+                    CLIENTE ||--o{ FACTURA : ""
+                    VEHICULO ||--o{ PASE : ""
+                    ESTACION ||--|{ TARIFA : ""
+                    ESTACION ||--o{ PASE : ""
             </div>
         </section>
 
-        <section id="gallery" class="fade-up">
-            <h2>A Glimpse of Paradise</h2>
-            <p>Explore the vibrant colors of Plitvice through the seasons.</p>
-            <div class="gallery-grid">
-                <figure><img src="p1.jpeg" alt="Lush green landscape with a large waterfall cascading into a turquoise lake."><figcaption>Peaceful Landscape</figcaption></figure>
-                <figure><img src="p2.jpeg" alt="A frozen waterfall in winter at Plitvice Lakes."><figcaption>Winter Colors</figcaption></figure>
-                <figure><img src="p3.jpeg" alt="Vibrant green moss covering rocks next to flowing water in spring."><figcaption>Spring Wonderland</figcaption></figure>
-                <figure><img src="p4.jpeg" alt="Rich orange and yellow autumn foliage surrounding the clear park lakes."><figcaption>Autumn Wonder</figcaption></figure>
+        <section class="ios-card">
+            <span class="ios-badge">Procesos Lógicos</span>
+            <h2 class="text-2xl sm:text-3xl mb-3">3. Diagrama de Flujo de Datos (DFD)</h2>
+            <p class="text-gray-500 mb-8 leading-relaxed">Representación del nivel 1 (Nivel Cero) del flujo de la información. Muestra cómo los datos se mueven entre las entidades externas (Cliente, Vehículo) y los almacenes de datos mediante procesos.</p>
+            <div class="mermaid">
+                flowchart TD
+                    %% Entidades Externas
+                    E_Cliente((Cliente))
+                    E_Vehiculo((Vehículo en<br>Tránsito))
+                    E_Reloj((Motor<br>Cron))
+
+                    %% Procesos
+                    P1(1.0 Módulo de<br>Carga de Clientes)
+                    P2(2.0 Registro y<br>Conteo de Pases)
+                    P3(3.0 Cálculo de<br>Monto Mensual)
+
+                    %% Almacenes
+                    D1[("D1: Base Clientes<br>y Vehículos")]
+                    D2[("D2: Tarifario<br>por Estación")]
+                    D3[("D3: Registro<br>de Pases")]
+                    D4[("D4: Facturación")]
+
+                    %% Flujos
+                    E_Cliente -->|Datos personales y<br>vehículos| P1
+                    P1 -->|Altas/Modificaciones| D1
+                    
+                    E_Vehiculo -->|Lectura Patente/Tag<br>+ ID Estación| P2
+                    P2 <-->|Valida Vehículo<br>Obtiene Tipo| D1
+                    P2 <-->|Consulta Monto<br>según Estación y Tipo| D2
+                    P2 -->|Inserta Nuevo Pase| D3
+
+                    E_Reloj -->|Trigger: Fin de mes| P3
+                    D3 -->|Pases no facturados| P3
+                    D1 -->|Agrupación por Cliente| P3
+                    P3 -->|Genera Resumen| D4
+                    P3 -->|Notificación Total a Pagar| E_Cliente
             </div>
         </section>
 
-        <section id="attractions" class="fade-up">
-            <h2>What Will You See?</h2>
-            <div class="attractions-grid">
-                <article>
-                    <i class="fas fa-water fa-3x attraction-icon"></i>
-                    <h3>The Upper Lakes</h3>
-                    <p>A serene series of 12 lakes in a dolomite valley, surrounded by dense forests and interconnected by waterfalls.</p>
-                </article>
-                <article>
-                    <i class="fas fa-mountain fa-3x attraction-icon"></i>
-                    <h3>The Lower Lakes</h3>
-                    <p>Four smaller lakes in a limestone canyon, featuring the iconic Great Waterfall (Veliki Slap).</p>
-                </article>
-                <article>
-                    <i class="fas fa-leaf fa-3x attraction-icon"></i>
-                    <h3>Flora & Fauna</h3>
-                    <p>Discover a rich biodiversity, including over 1,400 plant species and rare animals like the brown bear.</p>
-                </article>
-                <article>
-                    <i class="fa-solid fa-compass fa-3x attraction-icon"></i>
-                    <h3>Timeless Escape</h3>
-                    <p>From lush spring greens to golden autumn tones, Plitvice reveals a different kind of magic in every season.</p>
-                </article>
+        <section class="ios-card">
+            <span class="ios-badge">Interacción de Usuario</span>
+            <h2 class="text-2xl sm:text-3xl mb-3">4. Diagrama de Casos de Uso</h2>
+            <p class="text-gray-500 mb-8 leading-relaxed">Identifica los actores principales del sistema y las funciones o servicios (casos de uso) que pueden ejecutar dentro de la plataforma.</p>
+            <div class="mermaid">
+                flowchart LR
+                    subgraph Actores
+                        A[\Administrador Peaje/]
+                        C[\Cliente Final/]
+                        S[\Sensor/Sistema/]
+                    end
+
+                    subgraph Sistema de Gestión de Peajes
+                        UC1([Gestionar Clientes y Vehículos])
+                        UC2([Definir Tarifas por Estación y Tipo])
+                        UC3([Registrar Pase en Tiempo Real])
+                        UC4([Contabilizar Pases por Estación])
+                        UC5([Generar Facturación Mensual])
+                        UC6([Pagar Total del Mes])
+                    end
+
+                    A --> UC1
+                    A --> UC2
+                    A --> UC4
+                    
+                    C --> UC1
+                    C --> UC6
+                    
+                    S --> UC3
+                    S --> UC5
+                    
+                    UC3 -.->|include| UC4
             </div>
         </section>
 
-        <section id="contact" class="fade-up">
-            <div class="container">
-                <h2>Get in Touch</h2>
-                <p>Have questions? Our team is here to help you plan your visit. Reach out to us for any inquiries.</p>
-                <div class="contact-wrapper">
-                    <div class="contact-form">
-                        <form id="contact-form">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                            <button type="submit">Send Message</button>
-                        </form>
-                    </div>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45084.66443391039!2d15.579469792072122!3d44.88139525492138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4761bf647de77123%3A0xf33919c9103c3283!2sParque%20Nacional%20de%20los%20Lagos%20de%20Plitvice!5e0!3m2!1ses-419!2sar!4v1720050893540!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
+        <section class="ios-card">
+            <span class="ios-badge">POO / Backend</span>
+            <h2 class="text-2xl sm:text-3xl mb-3">5. Diagrama de Clases</h2>
+            <p class="text-gray-500 mb-8 leading-relaxed">Arquitectura de software orientada a objetos. Detalla los atributos, métodos y multiplicidad de las clases que implementan la lógica de negocio.</p>
+            <div class="mermaid">
+                classDiagram
+                    class Cliente {
+                        -int idCliente
+                        -String razonSocial
+                        -String cuit
+                        +registrarVehiculo(Vehiculo v)
+                        +obtenerPasesMensuales() List~Pase~
+                        +calcularDeudaTotal() float
+                    }
+                    class Vehiculo {
+                        -String patente
+                        -String tipoVehiculo
+                        -String tagRFID
+                        +vincularTag(String tag)
+                    }
+                    class EstacionPeaje {
+                        -int idEstacion
+                        -String ubicacion
+                        +leerTag(String tagRFID)
+                        +obtenerMonto(String tipoVehiculo) float
+                        +conteoPasesMensual() int
+                    }
+                    class Tarifa {
+                        -String tipoVehiculo
+                        -float montoPase
+                        +actualizarMonto(float nuevoMonto)
+                    }
+                    class Pase {
+                        -int idPase
+                        -DateTime fechaHora
+                        -float montoCobrado
+                        +registrar() bool
+                    }
+                    class FacturaMensual {
+                        -int idFactura
+                        -int mes
+                        -int anio
+                        -float montoFinalAPagar
+                        +generarResumen()
+                        +marcarPagada()
+                    }
+
+                    Cliente "1" *-- "1..*" Vehiculo : posee
+                    EstacionPeaje "1" *-- "1..*" Tarifa : administra
+                    Vehiculo "1" -- "0..*" Pase : genera
+                    EstacionPeaje "1" -- "0..*" Pase : registra
+                    Cliente "1" -- "0..*" FacturaMensual : debe
+                    FacturaMensual "1" o-- "1..*" Pase : agrupa
             </div>
         </section>
+
+        <section class="ios-card">
+            <span class="ios-badge">Máquina de Estados</span>
+            <h2 class="text-2xl sm:text-3xl mb-3">6. Diagrama de Transición de Estados (DTE)</h2>
+            <p class="text-gray-500 mb-8 leading-relaxed">Muestra el ciclo de vida de la entidad <strong>Factura Mensual</strong>, controlando cómo avanza desde la agrupación de pases hasta la liquidación del cliente.</p>
+            <div class="mermaid">
+                stateDiagram-v2
+                    [*] --> Acumulando_Pases : Inicia 1er día del mes
+                    
+                    Acumulando_Pases --> Cerrada : Llega fin de mes
+                    Cerrada --> Calculando_Total : Trigger automático
+                    
+                    Calculando_Total --> Emitida : Cálculo exitoso
+                    Calculando_Total --> Error_Calculo : Falla en BD
+                    Error_Calculo --> Calculando_Total : Reintento
+                    
+                    Emitida --> Notificada_Al_Cliente : Envío Email/App
+                    
+                    Notificada_Al_Cliente --> Pagada : Cliente realiza el pago
+                    Notificada_Al_Cliente --> Vencida : Pasa fecha de vto.
+                    
+                    Vencida --> Pagada : Cliente paga con recargo
+                    
+                    Pagada --> [*]
+            </div>
+        </section>
+
     </main>
-    
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <h3>Follow Us</h3>
-                <ul>
-                    <li><a href="https://www.facebook.com/PlitviceLakesNP" aria-label="Facebook">Facebook</a></li>
-                    <li><a href="https://www.instagram.com/plitvicelakesnp/" aria-label="Instagram">Instagram</a></li>
-                    <li><a href="https://www.youtube.com/@plitvicelakesnp" aria-label="YouTube">YouTube</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Newsletter</h3>
-                <p>Subscribe for updates and special offers.</p>
-                <form id="subscribe-form">
-                    <input type="email" placeholder="Your Email Address">
-                    <a href="https://email.np-plitvicka-jezera.hr/x/plugin/?pName=subscribe&MIDRID=S7Y1BAAA38&pLang=en&Z=902555087" class="cta-button" target="_blank">Subscribe</a>
-                </form>
-            </div>
-            <div>
-                <h3>Contact</h3>
-                <address>
-                    Josipa Jovića 19, Croatia<br>
-                    <a href="tel:+385053751015">+385 (0)53 751 015</a><br>
-                    <a href="mailto:info@np-plitvicka-jezera.hr">info@np-plitvicka-jezera.hr</a>
-                </address>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <p>© 2025 Plitvice Lakes National Park. All Rights Reserved.</p>
-        </div>
+
+    <footer class="text-center py-8 text-gray-500 text-sm">
+        <p>Documentación generada por el Arquitecto de Sistemas. Motor: Mermaid v11.4.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module">
+        // Using exactly version 11.4 as requested
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.esm.min.mjs';
+        
+        // Initialization matching the Spatial UI styling
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            securityLevel: 'loose',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+            themeVariables: {
+                // Backgrounds
+                background: 'transparent',
+                primaryColor: '#ffffff',
+                secondaryColor: '#f5f5f7',
+                tertiaryColor: '#e5e5ea',
+                
+                // Borders
+                primaryBorderColor: 'rgba(0, 0, 0, 0.1)',
+                
+                // Texts
+                primaryTextColor: '#1d1d1f',
+                secondaryTextColor: '#424245',
+                
+                // Lines / Arrows
+                lineColor: '#86868b',
+                
+                // Specific chart overrides
+                nodeBorder: 'rgba(0, 0, 0, 0.1)',
+                clusterBkg: 'rgba(255, 255, 255, 0.4)',
+                clusterBorder: 'rgba(0, 0, 0, 0.05)',
+                
+                // State diagram specific
+                stateBkg: 'rgba(255, 255, 255, 0.8)',
+                stateBorder: 'rgba(0,0,0,0.1)',
+                
+                // Class diagram specific
+                classText: '#1d1d1f'
+            },
+            flowchart: {
+                curve: 'basis',
+                padding: 20
+            }
+        });
+    </script>
 </body>
 </html>
